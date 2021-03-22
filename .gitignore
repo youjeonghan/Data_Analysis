@@ -1,5 +1,5 @@
 ### customer ###
-data/
+raw_data/
 ###########
 # Created by https://www.toptal.com/developers/gitignore/api/python,macos,windows,vscode
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,macos,windows,vscode
