@@ -1,11 +1,18 @@
-import os
+from pymongo import MongoClient
+from pprint import pprint
+import pandas as pd
 
-extensions1 = os.path.splitext("raw_data\\data_000000000000")[1]
-extensions2 = os.path.splitext("raw_data\\data_000000000000.json")[1]
+my_client = MongoClient("mongodb://localhost:27017/")
+mydb = my_client["project"]
+mycol = mydb["All_data"]
 
-print(extensions2, type(extensions2))
-if extensions1 == "":
-    print(extensions1)
+myquery = {"event_name": "ads"}
+result_see = {"_id": False, "event_name": True, "event_params": True}
+_list = mycol.find(myquery, result_see).limit(3)
 
-if extensions1 == ".json":
-    print(extensions2)
+# for i in _list:
+#     pprint(i)
+
+temp = pd.DataFrame(_list)
+pprint(temp)
+print("exit")
